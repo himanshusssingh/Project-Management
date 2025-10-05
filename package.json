@@ -5,12 +5,16 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-     "dev": "nodemon src/index.js",
-     "start": "node src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "author": "Himanshu Singh",
   "license": "ISC",
   "devDependencies": {
     "prettier": "3.6.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0"
   }
 }
