@@ -1,8 +1,5 @@
 import express, { json } from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv'
-
-dotenv.config({ path: './.env' });
 
 
 const app = express();
@@ -19,7 +16,6 @@ app.use(cors({
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorisaton"],
 }))
-
 
 
 app.get("/", (req, res) => {
