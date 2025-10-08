@@ -25,18 +25,18 @@ const sendEmail = async (options) => {
     const emailHtml = mailGenerator.generate(options.mailgenContent);
     
     // Looking to send emails in production? Check out our Email API/SMTP product!
-    const transport = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
       host: process.env.MAILTRAP_SMTP_HOST,
-      port: MAILTRAP_SMTP_PORT,
+      port: process.env.MAILTRAP_SMTP_PORT,
       auth: {
-        user: MAILTRAP_SMTP_USER,
-        pass: MAILTRAP_SMTP_PASS
+        user: process.env.MAILTRAP_SMTP_USER,
+        pass: process.env.MAILTRAP_SMTP_PASS
       }
     });
     
 
     try{
-        const info = await transporter.sendMail({
+        await transporter.sendMail({
         from: "mail.taskmanager@example.com",
         to: options.email,
         subject: options.subject,
@@ -48,9 +48,6 @@ const sendEmail = async (options) => {
         console.error("Email service failed siliently. Make sure that you have provided your MAILTRAP credentials in the .env file");
         console.error("Error: ", err);
     }
-
-
-    console.log("Message sent:", info.messageId);
 }
 
 
