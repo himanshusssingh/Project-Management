@@ -19,7 +19,7 @@ import {
   userLoginValidator,
   userRegisterValidator,
   userResetForgotPasswordValidator,
-} from "../validators/index.js";
+} from "../validator/index.js";
 
 
 

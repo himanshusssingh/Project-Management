@@ -52,7 +52,7 @@ const registerUser = asyncHandler(async(req, res) => {
         subject: "Please verify your email.",
         mailgenContent: emailVerificationMailgenContent(
             user.username,
-            `${req.protocol}://${req.get("host")}/api/v1/users/verify-email/${unHashedToken}`,
+            `${req.protocol}://${req.get("host")}/api/v1/auth/verify-email/${unHashedToken}`,
         ),
     });
 
@@ -151,15 +151,15 @@ const getCurrentUser = asyncHandler(async(req, res) => {
 });
 
 const verifyEmail = asyncHandler(async(req, res) => {
-    const {verificatonToken} = req.params;
+    const {verificationToken} = req.params;
 
-    if(!verificatonToken) {
+    if(!verificationToken) {
         throw new ApiError(400, "Email Verification token is not found!");
     }
 
     let hashedToken = crypto
-       .creteHashed("sha256")
-       .update(verificatonToken)
+       .createHash("sha256")
+       .update(verificationToken)
        .digest("hex");
 
     const user = await User.findOne({
@@ -226,6 +226,7 @@ const resendEmailVerification = asyncHandler(async(req, res) => {
 const refreshAccessToken = asyncHandler(async(req, res) => {
     const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken;
 
+
     if(!incomingRefreshToken) {
         throw new ApiError(401, "Unathorised access.");
     }
@@ -236,7 +237,7 @@ const refreshAccessToken = asyncHandler(async(req, res) => {
             process.env.REFRESH_TOKEN_SECRET,
         );
 
-        const user = await User.findById(decodeToken?._id);
+        const user = await User.findById(decodedToken?._id);
         if(!user) {
             throw new ApiError(401, "Invalid refresh token.");
         }
