@@ -1,5 +1,5 @@
-import {Router} from "express";
-import {validate} from '../middlewares/validator.middleware.js';
+import { Router } from "express";
+import { validate } from "../middlewares/validator.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import {
   changeCurrentPassword,
@@ -21,8 +21,6 @@ import {
   userResetForgotPasswordValidator,
 } from "../validator/index.js";
 
-
-
 const router = Router();
 
 router.route("/register").post(userRegisterValidator(), validate, registerUser);
@@ -35,7 +33,6 @@ router
 router
   .route("/reset-password/:resetToken")
   .post(userResetForgotPasswordValidator(), validate, resetForgotPassword);
-
 
 //secure routes
 router.route("/logout").post(verifyJWT, logout);
@@ -51,7 +48,5 @@ router
 router
   .route("/resend-email-verification")
   .post(verifyJWT, resendEmailVerification);
-
-
 
 export default router;
