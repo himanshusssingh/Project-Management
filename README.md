@@ -41,12 +41,12 @@ It is designed to be modular, with separation of concerns (API, business logic, 
 ## Setup & Installation
 
 1. **Clone the repo**  
-   ```bash
+   ```
    git clone https://github.com/himanshusssingh/Project-Manager.git
    cd Project-Manager
 
 2. **Install dependencies**
-
+   ```
    npm install  
    
 3. **Configure environment variables**
@@ -54,8 +54,7 @@ It is designed to be modular, with separation of concerns (API, business logic, 
    Create .env files with required keys (DB connection, JWT secret, etc).
 
 4. **Start the app**
-
-   # in backend
+   ```
    npm run dev  
 
 
@@ -68,24 +67,18 @@ It is designed to be modular, with separation of concerns (API, business logic, 
 
     You should set up environment variables as follows (example):
     
-    ```bash
     PORT=
     CORS_ORIGIN=
     MONGO_URI=
-    
     ACCESS_TOKEN_SECRET=
     ACCESS_TOKEN_EXPIRY=
-    
     REFRESH_TOKEN_SECRET=
     REFRESH_TOKEN_EXPIRY=
-    
     MAILTRAP_SMTP_HOST=
     MAILTRAP_SMTP_PORT=
     MAILTRAP_SMTP_USER=
     MAILTRAP_SMTP_PASS=
-    
     FORGOT_PASSWORD_REDIRECT_URL=
-    ```
 
 ---    
 
